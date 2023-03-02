@@ -1,0 +1,3 @@
+/home/tazukiswift/Programming/C-Project-Euler/build/CMakeFiles/ProjectE.dir
+/home/tazukiswift/Programming/C-Project-Euler/build/CMakeFiles/edit_cache.dir
+/home/tazukiswift/Programming/C-Project-Euler/build/CMakeFiles/rebuild_cache.dir

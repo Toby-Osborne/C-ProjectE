@@ -1,0 +1,3 @@
+// the configured options and settings for Tutorial
+#define ProjectE_VERSION_MAJOR @ProjectE_VERSION_MAJOR@
+#define ProjectE_VERSION_MINOR @ProjectE_VERSION_MINOR@
