@@ -14,4 +14,8 @@ void main()
     Question8();
     Question9();
     Question10();
+
+    Question11();
+    Question12();
+    
 }

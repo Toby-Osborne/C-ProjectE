@@ -80,7 +80,9 @@ CMakeFiles/ProjectE.dir/questions/questions.c.o: ../questions/questions.c \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   ../questions/questions.h \
-  ../questions/useful.h
+  ../questions/useful.h \
+  /usr/include/string.h \
+  /usr/include/strings.h
 
 CMakeFiles/ProjectE.dir/questions/useful.c.o: ../questions/useful.c \
   /usr/include/stdc-predef.h \
@@ -157,6 +159,8 @@ CMakeFiles/ProjectE.dir/questions/useful.c.o: ../questions/useful.c \
   /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h
 
+
+/usr/include/strings.h:
 
 ../questions/useful.c:
 
@@ -285,6 +289,8 @@ ProjectEConfig.h:
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/string.h:
 
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
