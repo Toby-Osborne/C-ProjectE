@@ -305,7 +305,37 @@ void Question15() {
     // Out of dedication I will now attempt to solve the above with C using n=20
     // grid_step(0,0,n);
     
-    uint64_t product = (uint64_t)pow(2,(10-8)) * 7*23*5*3*29*31*11*37*39;
+    // If you simplify for n=20, you get the below product
+    uint64_t product = (uint64_t)pow(2,(10-8))*7*23*5*3*29*31*11*37*39;
     
     printf("Q15: %" PRIu64"\n",product);
+}
+
+void Question16() {
+    uint16_t digits[500] = {0};
+    digits[0] = 1;
+    for (uint16_t i = 0;i<1000;i++){
+        for (uint16_t j = 0;j<500;j++){
+            digits[j]*=2;
+        }
+        for (uint16_t j = 0;j<400;j++){
+            uint16_t digit = digits[j];
+            digits[j] = 0;
+            uint16_t counter = 0;
+            while(digit > 0) {
+                digits[j+counter]+=digit%10;
+                digit/=10;
+                counter++;
+            }
+        }
+    }
+    uint64_t sum = 0;
+    for(uint16_t i = 0;i<500;i++){
+        sum+=digits[i];
+    }
+    printf("Q16:%"PRIu64"\n",sum);
+}
+
+void Question17() {
+
 }
