@@ -118,3 +118,17 @@ uint32_t num_factors_from_primes(uint32_t powers[], uint32_t length) {
     }
     return num_factors;
 }
+
+uint32_t collatz(uint64_t n) {
+    uint32_t counter = 1;
+    while (n!=1){
+        if (!(n%2)) {
+            n/=2;
+        } else {
+            n*=3;
+            n+=1;
+        }
+        counter++;
+    }
+    return counter;
+}

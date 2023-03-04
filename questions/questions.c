@@ -285,3 +285,16 @@ void Question13() {
     }  
     printf("\n");
 }
+
+void Question14() {
+    uint32_t longest_chain = 0;
+    uint32_t longest_seed = 0;
+    for (uint64_t i = 1;i<1000000;i++){
+        uint32_t chain = collatz(i);
+        if (chain>longest_chain) {
+            longest_seed=i;
+            longest_chain = chain;
+        }
+    }
+    printf("Q14: Chain Length - %" PRIu32 ", Seed - %"PRIu32,longest_chain,longest_seed);
+}

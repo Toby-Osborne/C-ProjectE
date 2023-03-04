@@ -16,3 +16,4 @@ uint32_t num_factors_from_primes(uint32_t powers[], uint32_t length);
 
 uint32_t prime_factorization(uint64_t number, uint32_t factors[], uint32_t factors_repeats[], uint32_t factors_length, uint32_t primes[], uint32_t primes_length);
 
+uint32_t collatz(uint64_t n);
