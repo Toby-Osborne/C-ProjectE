@@ -266,24 +266,33 @@ void Question11() {
 }
 
 void Question12() {
-    uint32_t primes_length = 10000;
-    uint32_t primes[primes_length]; 
+    uint32_t primes_length = 3000;
+    uint32_t primes[primes_length];
     prime_list(primes,primes_length);
 
-    uint32_t factors[600] = {0};
-    uint32_t factors_repeats[600] = {0};
-    uint32_t num_factors = 0;
+    uint32_t factors[500] = {0};
+    uint32_t factors_repeats[500] = {0};
+
+    uint32_t num_factors_last = 0;
+    uint32_t num_factors_current = 0;
     
-    uint64_t triangle_index = 1;
-    uint64_t triangle=0;
-    uint64_t factors_length = 0;
-    while (num_factors < 500){
-        memset(factors, 0, sizeof(uint32_t) * factors_length);
-        memset(factors_repeats, 0, sizeof(uint32_t) * factors_length);
-        triangle = triangle_index * (triangle_index+1) / 2;
-        factors_length = prime_factorization(triangle, factors, factors_repeats, 600, primes, primes_length);
-        num_factors = num_factors_from_primes(factors_repeats, factors_length);
+    uint32_t triangle_index = 1;
+    uint64_t triangle_last=1;
+    uint64_t triangle_current = 2;
+
+    while (num_factors_current*num_factors_last < 500){
+        memset(factors, 0, sizeof(uint32_t)*num_factors_current);
+        memset(factors_repeats, 0, sizeof(uint32_t)*num_factors_current);
+
+        triangle_last = triangle_current;
+        triangle_current = triangle_index+1;
+        if (!(triangle_current%2)) triangle_current/=2;
+
+        uint32_t factors_length_current = prime_factorization(triangle_current, factors, factors_repeats, 500, primes, primes_length);
+
+        num_factors_last = num_factors_current;
+        num_factors_current = num_factors_from_primes(factors_repeats, factors_length_current);
         triangle_index++;
-    }   
-    printf("Q12: factors: %" PRIu32 ", number: %" PRIu64 "\n",num_factors,triangle);
+    }
+    printf("Q12: factors: %" PRIu32 ", number: %" PRIu64 "\n",num_factors_current*num_factors_last,triangle_last*triangle_current);   
 }
