@@ -336,9 +336,46 @@ void Question16() {
     for(uint16_t i = 0;i<500;i++){
         sum+=digits[i];
     }
-    printf("Q16:%"PRIu64"\n",sum);
+    printf("Q16: %"PRIu64"\n",sum);
 }
 
 void Question17() {
+    uint16_t ones[10] = {0,3,3,5,4,4,3,5,5,4};
+    uint16_t tens[10] = {0,3,6,6,5,5,5,7,6,6};
+    uint16_t teens[10] = {0,6,6,8,8,7,7,9,8,8};
+    uint16_t hundereds[10] = {0};
+    uint16_t thousands[10] = {0};
+    for (uint16_t i = 1;i<10;i++){
+        hundereds[i]=ones[i]+10;
+        thousands[i]=ones[i]+8;
+    }
+    uint32_t sum = 0;
+    for (uint16_t j = 1;j<=1000;j++){
+        
+        uint16_t i = j;
+        // Process ones/tens together because of teens
+        // This process be expanded every 10^3 if required
+        if ((i%100>10)&&(i%100<20)){
+            sum+=teens[(i%100)-10];
+            i/=100;
+        } else {
+            // Process ones
+            sum+=ones[i%10];
+            i /= 10;
+            sum+=tens[i%10];
+            i /= 10;
+        }
+        // Process hundereds/thousands
+        sum+=hundereds[i%10];
+        // remove and for regular hundreds
+        if ((j%100==0)&&(j%1000>0)) sum-= 3;
+        i /= 10;
+        sum+=thousands[i%10];
+    }
+    printf("Q17: %"PRIu32"\n",sum);
+}
 
+void Question18() {
+    
+    printf("Q18""\n");
 }

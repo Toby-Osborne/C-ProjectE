@@ -30,3 +30,7 @@ void Question14();
 void Question15();
 
 void Question16();
+
+void Question17();
+
+void Question18();

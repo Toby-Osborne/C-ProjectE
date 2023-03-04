@@ -21,4 +21,6 @@ void main()
     Question14();
     Question15();
     Question16();
+    Question17();
+    Question18();
 }
