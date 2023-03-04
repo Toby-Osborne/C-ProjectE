@@ -314,11 +314,12 @@ void Question15() {
 void Question16() {
     uint16_t digits[500] = {0};
     digits[0] = 1;
+    uint16_t msb = 0;
     for (uint16_t i = 0;i<1000;i++){
-        for (uint16_t j = 0;j<500;j++){
+        for (uint16_t j = 0;j<msb+1;j++){
             digits[j]*=2;
         }
-        for (uint16_t j = 0;j<400;j++){
+        for (uint16_t j = 0;j<msb+1;j++){
             uint16_t digit = digits[j];
             digits[j] = 0;
             uint16_t counter = 0;
@@ -327,6 +328,8 @@ void Question16() {
                 digit/=10;
                 counter++;
             }
+            // Only perform loop up to msb for efficiency
+            if(j+counter-1 > msb)msb+=(counter-1);
         }
     }
     uint64_t sum = 0;
