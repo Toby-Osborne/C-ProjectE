@@ -81,6 +81,7 @@ CMakeFiles/ProjectE.dir/questions/questions.c.o: ../questions/questions.c \
   /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   ../questions/questions.h \
   ../questions/useful.h \
+  ../questions/data.h \
   /usr/include/string.h \
   /usr/include/strings.h
 
@@ -161,6 +162,8 @@ CMakeFiles/ProjectE.dir/questions/useful.c.o: ../questions/useful.c \
 
 
 /usr/include/strings.h:
+
+../questions/data.h:
 
 ../questions/useful.c:
 

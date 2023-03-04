@@ -66,4 +66,5 @@ CMakeFiles/ProjectE.dir/questions/questions.c.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /home/tazukiswift/Programming/C-Project-Euler/./questions/questions.h \
  /home/tazukiswift/Programming/C-Project-Euler/./questions/useful.h \
+ /home/tazukiswift/Programming/C-Project-Euler/./questions/data.h \
  /usr/include/string.h /usr/include/strings.h

@@ -258,6 +258,30 @@ void Question12() {
     printf("Q12: factors: %" PRIu32 ", number: %" PRIu64 "\n",num_factors_current*num_factors_last,triangle_last*triangle_current);   
 }
 
-Question13() {
-
+void Question13() {
+    uint16_t numbers[100][50];
+    uint16_t sum[52] = {0};
+    // 0 lsd
+    for (uint16_t i = 0;i<100;i++) { // row
+        for (uint16_t j = 0;j<50;j++) { //column
+            numbers[i][j]=(Q13_data[i*50+j]-'0');
+            sum[49-j]+=numbers[i][j];
+        }
+    }
+    for (uint32_t i = 0;i<52;i++){
+        uint16_t remainder = sum[i];
+        sum[i] = 0;
+        uint16_t counter = 0;
+        while (remainder > 0) {
+            sum[i+counter]+=remainder%10;
+            remainder /= 10;
+            counter++;
+        }
+    }
+    // It can only go up to 52 digits
+    printf("Q13: ");
+    for (uint16_t i = 0;i<10;i++){
+        printf("%"PRIu16,sum[51-i]);
+    }  
+    printf("\n");
 }
