@@ -296,5 +296,16 @@ void Question14() {
             longest_chain = chain;
         }
     }
-    printf("Q14: Chain Length - %" PRIu32 ", Seed - %"PRIu32,longest_chain,longest_seed);
+    printf("Q14: Chain Length - %" PRIu32 ", Seed - %"PRIu32"\n",longest_chain,longest_seed);
+}
+
+void Question15() {
+    // Using this sequence you can find that the pattern is:
+    // (2*n)! / (n!)^2
+    // Out of dedication I will now attempt to solve the above with C using n=20
+    // grid_step(0,0,n);
+    
+    uint64_t product = (uint64_t)pow(2,(10-8)) * 7*23*5*3*29*31*11*37*39;
+    
+    printf("Q15: %" PRIu64"\n",product);
 }

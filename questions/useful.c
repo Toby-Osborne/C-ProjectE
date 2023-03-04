@@ -77,12 +77,11 @@ void prime_list(uint32_t primes[], uint32_t length) {
         number++;
     }
 }
-uint32_t factorial_lookup[20] = {1,2,6,24,120,720,5040,40320,362880,3628800};
+uint64_t factorial_lookup[10] = {1,2,6,24,120,720,5040,40320,362880,3628800};
 
-uint32_t factorial(uint32_t n) {
-    if (n<11) return factorial_lookup[n-1];
-    uint32_t factorial_number = 3628800;
-    for (uint32_t i = 11;i<(n+1);i++) {
+uint64_t factorial(uint16_t n) {
+    uint64_t factorial_number = 1;
+    for (uint64_t i = 1;i<(n+1);i++) {
         factorial_number*=i;
     }
     return factorial_number;
@@ -131,4 +130,27 @@ uint32_t collatz(uint64_t n) {
         counter++;
     }
     return counter;
+}
+
+uint64_t permutations = 0;
+
+void grid_step(uint16_t a,uint16_t b, uint16_t size) {
+    
+    if ((a==size)&&(b==size)) {
+        permutations++;
+        // printf("a = %"PRIu16"b = %"PRIu16"\n",a,b);
+        // printf("Permutations++: %"PRIu32"\n",permutations);
+    } else {
+        if (a<size) {
+            grid_step(a+1,b,size);
+        }
+        if (b<size) {
+            grid_step(a,b+1,size);
+        }
+    }
+    return;
+}
+
+uint64_t get_permutations() {
+    return permutations;
 }
