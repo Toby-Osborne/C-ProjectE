@@ -3,6 +3,9 @@
 
 # Ignore Build Directory
 build
+.vscode
+.idea
+cmake-build-debug
 
 # Object files
 *.o
