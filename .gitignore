@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# Ignore Build Directory
+build
+
 # Object files
 *.o
 *.ko
