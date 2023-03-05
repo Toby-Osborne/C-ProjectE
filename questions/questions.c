@@ -392,3 +392,28 @@ void Question18() {
     printf("Q18: %"PRIu32"\n",triangle[0][0]);
 }
 
+void Question19() {
+    uint16_t year = 1901;
+    uint16_t day = 1;
+    uint16_t weekday = 2;
+
+    uint16_t months_no_leap[12] = {1,32,60,91,121,152,182,213,244,274,305,335};
+    uint16_t months_leap[12] = {0,0,1,1,1,1,1,1,1,1,1,1};
+
+    uint16_t counter = 0;
+
+    while (year < 2001) {
+        for (uint16_t i = 0;i<12;i++){
+            if ((!(weekday))&&(day==(months_no_leap[i]+months_leap[i*((!(year%4)))]))) counter++;
+        }
+        day++;
+        weekday++;
+        weekday%=7;
+        if (day > 365+((!(year%4)))){
+            day = 1;
+            year++;
+        }
+    }
+    printf("Q19: %"PRIu16"\n",counter);
+}
+
