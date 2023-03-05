@@ -417,3 +417,31 @@ void Question19() {
     printf("Q19: %"PRIu16"\n",counter);
 }
 
+void Question20() {
+    uint16_t digits[163] = {0};
+    digits[0] = 1;
+    uint16_t msb = 0;
+    for (uint16_t i = 2;i<101;i++){
+        for (uint16_t j = 0;j<163;j++){
+            digits[j]*=i;
+        }
+        for (uint16_t j = 0;j<163;j++){
+            uint16_t digit = digits[j];
+            digits[j]=0;
+            uint16_t counter = 0;
+            while(digit>0){
+                digits[j+counter]+=digit%10;
+                digit/=10;
+                counter++;
+            }
+        }
+    }
+    uint16_t sum = 0;
+    for (uint16_t i = 162;i>0;i--){
+        sum+=digits[i];
+        printf("%"PRIu16,digits[i]);
+    }
+    printf("\n");
+    printf("Q20: %"PRIu16"\n",sum);
+}
+
