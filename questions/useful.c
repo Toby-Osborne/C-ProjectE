@@ -132,6 +132,7 @@ uint32_t collatz(uint64_t n) {
     return counter;
 }
 
+
 uint64_t permutations = 0;
 
 void grid_step(uint16_t a,uint16_t b, uint16_t size) {

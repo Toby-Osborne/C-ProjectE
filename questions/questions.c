@@ -376,6 +376,19 @@ void Question17() {
 }
 
 void Question18() {
-    
-    printf("Q18""\n");
+    // No Jagged Arrays >:(
+    uint32_t triangle[15][15] = {0};
+    for (uint16_t i = 0;i<15;i++){  //Row
+        for (uint16_t j = 0;j<i+1;j++){ //Column
+            uint16_t index = i*(i+1)/2+j;
+            triangle[i][j] = (Q18_data[3*index]-'0')*10+(Q18_data[3*index+1]-'0');
+        }
+    }
+    for (uint16_t i = 14;i>0;i--){  //Row
+        for (uint16_t j = 0;j<i;j++){ //Column
+            triangle[i-1][j] += (triangle[i][j] > triangle[i][j+1]) ? triangle[i][j] : triangle[i][j+1];
+        }
+    }
+    printf("Q18: %"PRIu32"\n",triangle[0][0]);
 }
+
