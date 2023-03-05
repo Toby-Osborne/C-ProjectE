@@ -422,16 +422,17 @@ void Question20() {
     digits[0] = 1;
     uint16_t msb = 0;
     for (uint16_t i = 2;i<101;i++){
-        for (uint16_t j = 0;j<163;j++){
+        for (uint16_t j = 0;j<msb+1;j++){
             digits[j]*=i;
         }
-        for (uint16_t j = 0;j<163;j++){
+        for (uint16_t j = 0;j<msb+1;j++){
             uint16_t digit = digits[j];
             digits[j]=0;
             uint16_t counter = 0;
             while(digit>0){
                 digits[j+counter]+=digit%10;
                 digit/=10;
+                if (j+counter==msb) msb++;
                 counter++;
             }
         }
