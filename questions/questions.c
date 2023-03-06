@@ -440,9 +440,31 @@ void Question20() {
     uint16_t sum = 0;
     for (uint16_t i = 162;i>0;i--){
         sum+=digits[i];
-        printf("%"PRIu16,digits[i]);
     }
-    printf("\n");
     printf("Q20: %"PRIu16"\n",sum);
 }
 
+void Question21() {
+    uint32_t primes_length = 10000;
+    uint32_t primes[primes_length];
+    memset(primes,0,sizeof(uint32_t)*primes_length);
+
+    // Generate prime list
+    prime_list(primes,10000);
+
+    uint16_t amicable[10000] = {0}; // 0 = not checked yet
+
+    uint32_t sum_all_amicable = 0;
+
+    for (int i = 220;i<10001;i++) {
+        if(amicable[i]) continue;
+        uint32_t sum_1=sum_factors(i,primes,primes_length)-i;
+        uint32_t sum_2=sum_factors(sum_1,primes,primes_length)-sum_1;
+        if ((sum_2==i)&&(i!=sum_1)){    // make sure that the numbers aren't equal
+            amicable[i]++;
+            amicable[sum_1]++;
+            sum_all_amicable+=(i+sum_1);
+        }
+    }
+    printf("Q21: %"PRIu32"\n",sum_all_amicable);
+}

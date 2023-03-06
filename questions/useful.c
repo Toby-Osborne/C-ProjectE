@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <inttypes.h>
 #include <math.h>
+#include <string.h>
 
 
 uint64_t euclidean_algorithm(uint64_t num_1, uint64_t num_2) {
@@ -77,7 +78,20 @@ void prime_list(uint32_t primes[], uint32_t length) {
         number++;
     }
 }
-uint64_t factorial_lookup[10] = {1,2,6,24,120,720,5040,40320,362880,3628800};
+
+void prime_sieve(uint16_t primes[], uint32_t length) {
+    memset(primes,0,sizeof(uint16_t)*2);
+    for (uint32_t i = 2;i<length;i++) primes[i] = 1;
+    for (uint32_t i = 2;i<(uint32_t)sqrt(length);i++){
+        if (primes[i]) {
+            uint32_t value = 2*i;
+            while(value<length){
+                primes[value]=0;
+                value+=i;
+            }
+        }
+    }
+}
 
 uint64_t factorial(uint16_t n) {
     uint64_t factorial_number = 1;
@@ -154,4 +168,41 @@ void grid_step(uint16_t a,uint16_t b, uint16_t size) {
 
 uint64_t get_permutations() {
     return permutations;
+}
+
+uint16_t factors_from_primes(uint32_t primes[],uint32_t prime_repeats[],uint16_t prime_length,uint32_t all_factors[]){
+    for (int i = 0;i<prime_repeats[0]+1;i++){
+        all_factors[i]=(uint16_t)pow(primes[0],i);
+    }
+    //Index should at any time give the number of elements in the list
+    uint16_t index = prime_repeats[0]+1;
+    for (int i = 1;i<prime_length;i++) {    //for every prime
+        for (int j = 1;j<prime_repeats[i]+1;j++) {  //for every non-zero power of that prime
+            for (int k = 0;k<index;k++){                    //for every element in the list previously
+                all_factors[index*j+k]=(uint16_t)pow(primes[i],j)*all_factors[k];
+            }
+        }
+        index=((index)*(prime_repeats[i]+1));
+    }
+    return index;
+}
+
+// Only defined once for speed
+uint32_t prime_factors[10000];
+uint32_t prime_factors_repeats[10000];
+
+uint32_t sum_factors(uint32_t num,uint32_t primes[],uint32_t primes_length) {
+    memset(prime_factors,0,sizeof(uint32_t)*10000);
+    memset(prime_factors_repeats,0,sizeof(uint32_t)*10000);
+
+    uint16_t num_prime_factors = prime_factorization(num,prime_factors,prime_factors_repeats,10000,primes,primes_length);
+    uint16_t num_factors = num_factors_from_primes(prime_factors_repeats,num_prime_factors);
+    uint32_t all_factors[num_factors];
+    memset(all_factors,0,sizeof(uint16_t)*num_factors);
+    factors_from_primes(prime_factors,prime_factors_repeats,num_prime_factors,all_factors);
+    uint32_t sum = 0;
+    for (int j = 0;j<num_factors;j++){
+        sum+=all_factors[j];
+    }
+    return sum;
 }
