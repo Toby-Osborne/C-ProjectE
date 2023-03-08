@@ -468,3 +468,54 @@ void Question21() {
     }
     printf("Q21: %"PRIu32"\n",sum_all_amicable);
 }
+
+// This requires a linked list...
+void Question22() {
+    FILE *fp;
+    char c;
+    fp = fopen ("./../files/Q22.txt", "r");
+    int name_counter = 0;
+    uint128_t names[5163] = {0};
+    char * names_char = (char *)names;
+
+    int byte_counter = -1;
+
+    while(1)
+    {
+        c = fgetc ( fp );
+        if (c == EOF) break;
+
+        if (c == ',') continue;
+        if (c == '"') {
+            if (byte_counter < 0) {
+                byte_counter++;
+            } else {
+                byte_counter = -1;
+                name_counter++;
+            }
+            continue;
+        }
+        if (name_counter >= 0) {
+            *(names_char+(sizeof(char)*byte_counter + sizeof(uint128_t)*name_counter)) = c;
+            byte_counter++;
+        }
+    }
+
+    qsort(names, 5163, sizeof(uint128_t), compare_function);
+
+    uint32_t local_sum = 0;
+    uint64_t global_sum = 0;
+
+    for (int i = 0;i<5163;i++){
+        for (int j = 0;j<sizeof(uint128_t)/sizeof(char);j++){
+            c = *(uint8_t*)(names_char+i*sizeof(uint128_t)+j*sizeof(char));
+            if (c==0) break;
+            local_sum+= c -'A'+1;
+        }
+        global_sum+=(uint64_t)local_sum*(i+1);
+        local_sum=0;
+    }
+
+    printf("Q22: %"PRIu64"\n",global_sum);
+    fclose (fp) ;
+}

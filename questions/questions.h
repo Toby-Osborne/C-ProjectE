@@ -40,3 +40,5 @@ void Question19();
 void Question20();
 
 void Question21();
+
+void Question22();

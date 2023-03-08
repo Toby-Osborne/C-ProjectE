@@ -27,3 +27,5 @@ void prime_sieve(uint16_t primes[], uint32_t length);
 uint16_t factors_from_primes(uint32_t primes[],uint32_t prime_repeats[],uint16_t prime_length,uint32_t all_factors[]);
 
 uint32_t sum_factors(uint32_t num,uint32_t primes[],uint32_t primes_length);
+
+int compare_function (const void * a, const void * b);

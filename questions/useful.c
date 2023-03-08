@@ -206,3 +206,13 @@ uint32_t sum_factors(uint32_t num,uint32_t primes[],uint32_t primes_length) {
     }
     return sum;
 }
+
+int compare_function (const void * a, const void * b) {
+    // Each element takes up 1 128-bit memory
+    for (int i = 0;i<16;i++){
+        if (*(uint8_t*)(a+i*sizeof(char)) - *(uint8_t*)(b+i*sizeof(char))) {
+            return *(uint8_t*)(a+i*sizeof(char)) - *(uint8_t*)(b+i*sizeof(char));
+        }
+    }
+    return 0;
+}

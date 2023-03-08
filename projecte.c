@@ -27,4 +27,5 @@ void main()
     Question20();
 
     Question21();
+    Question22();
 }
